@@ -1,0 +1,69 @@
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.btn-animate {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-animate:hover {
+  transform: scale(1.05);
+  background-color: #0056b3;
+}
+
+/* Example of media queries for responsiveness */
+@media screen and (max-width: 768px) {
+  .user-container {
+    padding: 20px;
+  }
+
+  .communication-list {
+    font-size: 14px;
+  }
+
+  .communication-item {
+    margin-bottom: 10px;
+  }
+
+  .modal {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .user-container {
+    padding: 10px;
+  }
+
+  .communication-list {
+    font-size: 12px;
+  }
+
+  .modal {
+    width: 90%;
+  }
+}

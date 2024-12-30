@@ -1,0 +1,73 @@
+.calendar-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin: 0 auto;
+    max-width: 700px;
+  }
+  
+  .calendar-day {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    position: relative;
+  }
+  
+  .calendar-day .calendar-date {
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  
+  .calendar-day .communication-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .status-badge {
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    font-size: 0.9em;
+  }
+  
+  .status-badge.overdue {
+    background-color: red;
+    color: white;
+  }
+  
+  .status-badge.pending {
+    background-color: yellow;
+    color: black;
+  }
+  
+  .complete-btn {
+    margin-top: 5px;
+    padding: 5px 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .complete-btn:hover {
+    background-color: darkgreen;
+  }
+  
+  .empty-day {
+    height: 50px;
+  }
+  

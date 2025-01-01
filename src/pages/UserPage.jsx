@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import mockCompanies from "../services/mockData";
 import { parseISO } from "date-fns";
-import "./../styles/UserPage.css";
+import "../styles/UserPage.css";
 import CalendarView from "../components/CalendarView"; // Import the CalendarView component
-import Notification from '../components/Notification';
+import Notification from "../components/Notification"; // Import Notification component
 import CommunicationChart from "../components/CommunicationChart"; // Import the new chart component
-import CommunicationDetailModal from "../components/CommunicationDetailsModal"; // Import the Modal component
-
+import CommunicationDetailModal from "../components/CommunicationDetailModal"; // Import the Modal component
 
 const UserPage = () => {
   const [companies, setCompanies] = useState(mockCompanies);
   const [hoveredCompanyId, setHoveredCompanyId] = useState(null);
-  const [overdueNotification, setOverdueNotification] = useState(false);
   const [overdueCompanies, setOverdueCompanies] = useState([]);
   const [selectedCompanyId, setSelectedCompanyId] = useState(null); // State to handle selected company for the modal
+  const [showNotification, setShowNotification] = useState(false); // Show overdue notification
 
   // Function to handle marking a company as completed
   const markAsCompleted = (id) => {
@@ -25,21 +24,22 @@ const UserPage = () => {
     setCompanies(updatedCompanies);
   };
 
-  // Function to check if there are any overdue communications
-  const checkOverdueNotifications = () => {
+  // Memoized function to check overdue notifications
+  const checkOverdueNotifications = useCallback(() => {
     const today = new Date();
     const overdueCompaniesList = companies.filter(
-      (company) => parseISO(company.nextContact) < today && company.status !== "Completed"
+      (company) =>
+        parseISO(company.nextContact) < today && company.status !== "Completed"
     );
 
     setOverdueCompanies(overdueCompaniesList); // Set the list of overdue companies
-    setOverdueNotification(overdueCompaniesList.length > 0); // If there are overdue companies, show the notification
-  };
+    setShowNotification(overdueCompaniesList.length > 0); // Show notification if there are overdue companies
+  }, [companies]);
 
   // Re-check for overdue notifications when companies or statuses change
   useEffect(() => {
     checkOverdueNotifications();
-  }, [companies]);
+  }, [checkOverdueNotifications]);
 
   // Get the selected company for the modal
   const selectedCompany = companies.find((company) => company.id === selectedCompanyId);
@@ -49,16 +49,11 @@ const UserPage = () => {
       <h2>User Module</h2>
 
       {/* Overdue Notification */}
-      {overdueNotification && (
-        <div className="overdue-notification">
-          <p>You have overdue communications with the following companies:</p>
-          <ul>
-            {overdueCompanies.map((company) => (
-              <li key={company.id}>{company.name}</li>
-            ))}
-          </ul>
-          <button onClick={() => setOverdueNotification(false)}>Close</button>
-        </div>
+      {showNotification && (
+        <Notification
+          notifications={overdueCompanies}
+          onClose={() => setShowNotification(false)} // Close notification on close
+        />
       )}
 
       <h3>Upcoming Communications</h3>

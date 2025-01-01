@@ -1,55 +1,45 @@
 import React, { useState } from 'react';
-import CommunicationMethodForm from './CommunicationMethodForm';
+import '.././styles/CommunicationMethod.css'; // Make sure this is correct based on your folder structure
 
-const CommunicationMethodManagement = () => {
+const CommunicationMethods = () => {
   const [methods, setMethods] = useState([
     { name: 'LinkedIn Post', description: 'Post on LinkedIn', sequence: 1, mandatory: true },
-    { name: 'LinkedIn Message', description: 'Message on LinkedIn', sequence: 2, mandatory: false },
-    { name: 'Email', description: 'Send an Email', sequence: 3, mandatory: false },
+    { name: 'LinkedIn Message', description: 'Message on LinkedIn', sequence: 2, mandatory: true },
+    { name: 'Email', description: 'Send an email', sequence: 3, mandatory: false },
     { name: 'Phone Call', description: 'Call the company', sequence: 4, mandatory: false },
-    { name: 'Other', description: 'Other methods of communication', sequence: 5, mandatory: false },
+    { name: 'Other', description: 'Other methods', sequence: 5, mandatory: false }
   ]);
-  const [editingMethod, setEditingMethod] = useState(null);
 
-  const handleAddMethod = (methodData) => {
-    setMethods([...methods, methodData]);
+  const handleAddMethod = (method) => {
+    setMethods([...methods, method]);
   };
 
-  const handleEditMethod = (method) => {
-    setEditingMethod(method);
+  const handleEditMethod = (index, updatedMethod) => {
+    const newMethods = [...methods];
+    newMethods[index] = updatedMethod;
+    setMethods(newMethods);
   };
 
-  const handleUpdateMethod = (updatedMethod) => {
-    setMethods(methods.map((method) => method.name === updatedMethod.name ? updatedMethod : method));
-    setEditingMethod(null);
-  };
-
-  const handleDeleteMethod = (methodName) => {
-    setMethods(methods.filter((method) => method.name !== methodName));
+  const handleDeleteMethod = (index) => {
+    const newMethods = methods.filter((_, i) => i !== index);
+    setMethods(newMethods);
   };
 
   return (
     <div>
-      <h1>Communication Method Management</h1>
-      {/* Pass an empty object if editingMethod is null */}
-      <CommunicationMethodForm 
-        onSubmit={editingMethod ? handleUpdateMethod : handleAddMethod} 
-        communicationMethod={editingMethod || {}} 
-      />
-      <div>
-        <h2>Communication Method List</h2>
-        <ul>
-          {methods.map((method) => (
-            <li key={method.name}>
-              <span>{method.name}</span> - {method.description}
-              <button onClick={() => handleEditMethod(method)}>Edit</button>
-              <button onClick={() => handleDeleteMethod(method.name)}>Delete</button>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <h2>Communication Methods</h2>
+      <ul>
+        {methods.map((method, index) => (
+          <li key={index}>
+            <span>{method.name}</span> - {method.description} - Sequence: {method.sequence} - Mandatory: {method.mandatory ? "Yes" : "No"}
+            <button onClick={() => handleEditMethod(index, { ...method, description: 'Updated Description', mandatory: !method.mandatory })}>Edit</button>
+            <button onClick={() => handleDeleteMethod(index)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+      <button onClick={() => handleAddMethod({ name: 'New Method', description: 'Description', sequence: methods.length + 1, mandatory: false })}>Add Method</button>
     </div>
   );
 };
 
-export default CommunicationMethodManagement;
+export default CommunicationMethods;

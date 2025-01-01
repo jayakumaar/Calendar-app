@@ -1,19 +1,25 @@
 import React from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
-// Sample data for the chart, you can replace this with dynamic data from your state or API.
-const data = [
-  { name: 'Company A', frequency: 400 },
-  { name: 'Company B', frequency: 200 },
-  { name: 'Company C', frequency: 700 },
-  { name: 'Company D', frequency: 500 },
-  { name: 'Company E', frequency: 600 },
-];
+// Assuming companies have a communication history and we need to aggregate that for frequency data
+const CommunicationChart = ({ companies }) => {
+  // Safely check if companies exists and is an array
+  const transformData = () => {
+    if (!companies || !Array.isArray(companies)) return []; // Return empty array if companies is undefined or not an array
 
-const CommunicationChart = () => {
+    const data = companies.map(company => {
+      const frequency = company.communications ? company.communications.length : 0; // Safely check for communications
+      return {
+        name: company.name, // Company name
+        frequency: frequency, // Communication frequency
+      };
+    });
+    return data;
+  };
+
   return (
     <ResponsiveContainer width="100%" height={400}>
-      <LineChart data={data}>
+      <LineChart data={transformData()}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />

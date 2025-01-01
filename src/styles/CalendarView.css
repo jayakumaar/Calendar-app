@@ -1,73 +1,115 @@
+/* General Calendar Styles */
 .calendar-container {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .calendar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.calendar-header h3 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.calendar-header button {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.calendar-day {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+  position: relative;
+  background-color: #f9f9f9;
+}
+
+.calendar-date {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.communication-status {
+  margin-top: 10px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 5px;
+  font-size: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.complete-btn {
+  margin-top: 5px;
+  padding: 5px 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.complete-btn:hover {
+  background-color: #45a049;
+}
+
+/* Status Badge Styles */
+.status-badge.overdue {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.status-badge.pending {
+  background-color: #ffcc00;
+  color: white;
+}
+
+.status-badge.upcoming {
+  background-color: #4caf50;
+  color: white;
+}
+
+/* Empty day styling */
+.empty-day {
+  background-color: #f0f0f0;
+  height: 80px;
+  border: 1px solid #ddd;
+}
+
+/* Adjustments for responsiveness */
+@media (max-width: 600px) {
   .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
-    margin: 0 auto;
-    max-width: 700px;
+    grid-template-columns: repeat(3, 1fr);
   }
-  
+
+  .calendar-header h3 {
+    font-size: 20px;
+  }
+
   .calendar-day {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #ddd;
-    position: relative;
+    padding: 8px;
   }
-  
-  .calendar-day .calendar-date {
-    font-weight: bold;
-    font-size: 1.2em;
+
+  .calendar-date {
+    font-size: 16px;
   }
-  
-  .calendar-day .communication-status {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .status-badge {
-    padding: 5px;
-    margin-top: 5px;
-    border-radius: 5px;
-    font-size: 0.9em;
-  }
-  
-  .status-badge.overdue {
-    background-color: red;
-    color: white;
-  }
-  
-  .status-badge.pending {
-    background-color: yellow;
-    color: black;
-  }
-  
-  .complete-btn {
-    margin-top: 5px;
-    padding: 5px 10px;
-    background-color: green;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .complete-btn:hover {
-    background-color: darkgoldenrod;
-  }
-  
-  .empty-day {
-    height: 50px;
-  }
-  
+}

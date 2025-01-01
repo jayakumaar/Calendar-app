@@ -1,25 +1,18 @@
 import React, { useState } from "react";
-import { parseISO, isBefore, isToday, isEqual, isAfter } from "date-fns"; // Import missing functions
+import { parseISO, isBefore, isEqual } from "date-fns"; // Remove isToday import if unused
 import "../styles/CalendarView.css";
 
 const CalendarView = ({ companies, markAsCompleted }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
 
-  // Get the first and last day of the current month
-  const getMonthRange = () => {
-    const startOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-    const endOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
-    return { startOfMonth, endOfMonth };
-  };
-
   // Get all the days in the current month
   const getCalendarDays = () => {
-    const { startOfMonth, endOfMonth } = getMonthRange();
+    const startOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+    const lastDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
     const days = [];
 
     // Get the day of the week for the 1st day of the month
     const firstDayOfMonth = startOfMonth.getDay();
-    const lastDayOfMonth = endOfMonth.getDate();
 
     // Fill the calendar with empty days if the month doesn't start on Sunday
     for (let i = 0; i < firstDayOfMonth; i++) {
@@ -36,10 +29,8 @@ const CalendarView = ({ companies, markAsCompleted }) => {
 
   // Check if the date is overdue or pending based on the next contact date
   const getCommunicationStatus = (day) => {
-    const { startOfMonth, endOfMonth } = getMonthRange();
     const communicationsForDay = companies.filter((company) => {
       const nextContactDate = parseISO(company.nextContact);
-      // Check if the nextContact is the exact date of the day being checked
       const isSameDay = isEqual(nextContactDate, new Date(currentDate.getFullYear(), currentDate.getMonth(), day));
 
       return isSameDay && company.status !== "Completed"; // Only show for the exact day

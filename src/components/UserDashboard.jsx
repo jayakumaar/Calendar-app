@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styels/UserDashboard.css'
 
 const UserDashboard = ({ companies }) => {
   const getCommunicationStatus = (nextCommunicationDate) => {

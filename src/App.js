@@ -1,4 +1,3 @@
-// src/App.js
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -14,6 +13,7 @@ const App = () => {
     <div className="App">
       <Router>
         <Navbar />
+
         <Routes>
           {/* Define routes */}
           <Route path="/" element={<AdminPage />} />
@@ -24,6 +24,9 @@ const App = () => {
           {/* Add route for Company Management and Communication Method Management */}
           <Route path="/company-management" element={<CompanyManagement />} />
           <Route path="/communication-method-management" element={<CommunicationMethodManagement />} />
+
+          {/* Fallback route for undefined paths */}
+          <Route path="*" element={<h2>Page Not Found</h2>} />
         </Routes>
       </Router>
     </div>

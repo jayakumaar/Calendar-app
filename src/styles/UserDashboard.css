@@ -1,0 +1,43 @@
+/* src/styles/UserDashboard.css */
+
+.dashboard-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .company-card {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 200px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .company-card h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .company-card p {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  
+  .status {
+    font-weight: bold;
+  }
+  
+  .status.overdue {
+    color: red;
+  }
+  
+  .status.due {
+    color: yellow;
+  }
+  
+  .status.upcoming {
+    color: green;
+  }
+  

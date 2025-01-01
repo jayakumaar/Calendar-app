@@ -1,6 +1,8 @@
-// src/components/CompanyManagement.js
 import React, { useState } from 'react';
 import CompanyForm from './CompanyForm.jsx';
+// import './../styles/CommunicationMethod.css';
+import '../styles/CompanyManagement.css'; // Adjust the path as per your project structure
+
 
 const CompanyManagement = () => {
   const [companies, setCompanies] = useState([]);
@@ -27,6 +29,7 @@ const CompanyManagement = () => {
     <div>
       <h1>Company Management</h1>
       <CompanyForm onSubmit={editingCompany ? handleUpdateCompany : handleAddCompany} company={editingCompany} />
+      
       <div>
         <h2>Company List</h2>
         <ul>

@@ -1,5 +1,6 @@
 // src/components/Notification.js
 import React from "react";
+import '../styles/Notification.css';
 
 const Notification = ({ notifications, onClose }) => {
   return (

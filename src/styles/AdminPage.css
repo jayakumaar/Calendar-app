@@ -1,32 +1,30 @@
 .admin-container {
   padding: 20px;
   font-family: Arial, sans-serif;
+  background-color: whitesmoke;
+  margin-bottom: 10px;
+  height: 100%;
 }
 
 .button-container {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 20px;
+  border-radius: 5px;
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  padding: 20px; /* Add some padding inside the element */
+  border-radius: 10px; /* Optional: rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+  margin-bottom: 30px; /* Adds space at the bottom */
+
 }
 
-.button-container button {
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.button-container button:hover {
-  background-color: #45a049;
-}
 
 .content-container {
   display: flex;
   justify-content: space-between;
   gap: 20px;
   margin-top: 20px;
+  margin-left: 450px;
 }
 
 @media (max-width: 768px) {
@@ -37,25 +35,32 @@
 .admin-container {
   padding: 20px;
   font-family: Arial, sans-serif;
+  
 }
 
-.button-container {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
-}
+
 
 .button-container button {
   padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
+  background-image: linear-gradient(#0dccea, #0d70ea);
+  border: 0;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, .3) 0 5px 5px;
+  box-sizing: border-box;
+  color: #fff;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-family: Montserrat,sans-serif;
+  font-size: .9em;
+  margin: 5px;
+  text-align: center;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
+ 
 
 .button-container button:hover {
-  background-color: #45a049;
+  background-color: skyblue !important; /* Darker shade of green */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
 }
 
 .content-container {

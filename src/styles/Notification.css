@@ -1,44 +1,105 @@
 /* src/styles/Notification.css */
 
+/* Animation for sliding and fading in */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Notification container */
 .notification-container {
-    position: fixed;
-    top: 10%;
-    right: 10%;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 15px;
-    width: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  }
-  
-  .notification-container h3 {
-    margin: 0;
-    font-size: 18px;
-  }
-  
-  .notification-container ul {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  .notification-container li {
-    margin-bottom: 8px;
-    font-size: 14px;
-  }
-  
-  .notification-container .close-btn {
-    background: transparent;
-    border: none;
-    font-size: 16px;
-    color: #888;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-  }
-  
-  .notification-container .close-btn:hover {
-    color: #333;
-  }
-  
+  position: fixed;
+  top: 10%;
+  right: 10%;
+  background-color: #fff;
+  border: 3px solid #ccc;
+  padding: 15px;
+  width: 400px;
+  height: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  animation: slideIn 0.5s ease-out, fadeIn 0.5s ease-out;
+}
+
+/* Title styling */
+.notification-container h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+/* List styling */
+.notification-container ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.notification-container li {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+/* Close button styles */
+.notification-container .close-btn {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  color: #888;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+/* Close button hover effect */
+.notification-container .close-btn:hover {
+  color: #333;
+}
+
+/* Button Close Styling */
+.btn-close {
+  background-color: #0095ff;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 0;
+  outline: none;
+  padding: 8px 0.8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  vertical-align: baseline;
+  white-space: nowrap;
+  transition: background-color 0.3s, transform 0.2s ease;
+}
+
+/* Button Hover */
+.btn-close:hover {
+  background-color: #07c;
+  transform: scale(1.05); /* Button enlarges slightly on hover */
+}
+
+/* Button Focus */
+.btn-close:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+/* Button Active */
+.btn-close:active {
+  background-color: #0064bd;
+  box-shadow: none;
+}

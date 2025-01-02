@@ -1,6 +1,7 @@
 User Dashboard with Overdue Notifications and Calendar View
 Project Overview
-This project implements a User Dashboard that displays overdue communication notifications, a list of companies, and an interactive calendar. It includes features such as marking communications as completed, showing overdue or pending communications, and a detailed view of each company.
+This project implements a User Dashboard that displays overdue communication notifications, a list of companies, and an interactive calendar.
+ It includes features such as marking communications as completed, showing overdue or pending communications, and a detailed view of each company.
 
 Key Features:
 User Dashboard: Displays a list of companies with their communication details.

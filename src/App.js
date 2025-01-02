@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom"; // Use HashRouter for GitHub Pages
 import Navbar from "./components/Navbar";
 import AdminPage from "./pages/AdminPage";
 import UserPage from "./pages/UserPage";
@@ -13,7 +13,6 @@ const App = () => {
     <div className="App">
       <Router>
         <Navbar />
-
         <Routes>
           {/* Define routes */}
           <Route path="/" element={<AdminPage />} />

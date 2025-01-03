@@ -22,7 +22,7 @@ Clone the repository:
 bash
 Copy code
 git clone https://github.com/your-username/your-repo-name.git
-Install dependencies:
+ - Install dependencies:
 
 Navigate to the project folder and install the required dependencies using npm:
 
